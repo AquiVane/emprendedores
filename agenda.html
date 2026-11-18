@@ -179,7 +179,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   var fmt=new Intl.DateTimeFormat('es-AR',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'}), days=$('days');
   fetch(CORE+'/emprendedores/slots').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
     var list=(d.slots||[]); days.textContent='';
-    if(!list.length){days.textContent='Los turnos del próximo día hábil se abren a las '+(d.abreHora||'11:00')+' (hora de Argentina). Volvé a entrar a esa hora.';return}
+    if(!list.length){days.textContent='Por ahora no hay días disponibles. Volvé a entrar en unas horas.';return}
     list.forEach(function(s){
       var b=document.createElement('button'); b.type='button'; b.className='slot'; b.setAttribute('aria-pressed','false'); b.dataset.fecha=s.fecha;
       var dt=new Date(s.fecha+'T12:00:00Z'); b.innerHTML='<b>'+fmt.format(dt)+'</b><span>'+s.hora+'</span>';
